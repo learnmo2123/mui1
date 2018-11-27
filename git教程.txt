@@ -3,7 +3,7 @@ $ touch .gitignore 忽略某些文件
 1 $ git init 初始化
 2. $ touch .gitignore 因为有些文件太长,无法上传的
 在项目的目录: .gitignore 文件中添加 node_modules/   .idea(编辑器环境配置)
-3. $ git add .  
+3. $ git add .  回滚的话,git reset hard 版本号  或者重头再来,删除项目目录下的.git文件,重新创建仓库
 4  $ git status 查看状态
 5  $ git commit -m '备注...'
 6. git remote -v 查看远程仓库地址   

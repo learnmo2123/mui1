@@ -8,7 +8,7 @@
                 <div class="mui-media-body">
                     <h2>{{ item.title }}</h2>
                     <p class="mui-ellipsis">
-                        <span>发布时间:{{ item.add_time }}</span>
+                        <span>发布时间:{{ item.add_time | dateFormat }}</span>
                         <span class="click">点击{{ item.click}}次</span>
                     </p>
                 </div>
@@ -31,7 +31,7 @@
         methods:{
             getNewsList(){
                 this.$http.get("api/getnewslist").then(function(res){
-                  console.log(res.body);//vue扩展中才能看到
+                  console.log(res.body);//vue扩展中才能看到 别用alert会阻塞掉程序
                   if(res.body.status == 0){
                       this.newslist = res.body.message;
                   }

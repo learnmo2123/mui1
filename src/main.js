@@ -13,44 +13,61 @@ Vue.use(VueRouter);
 //全局设置ajax请求的根域名
 Vue.http.options.root = "http://127.0.0.1:3000/";
 //引入路由匹配对应的组件
-import home from './components/tabbar/home.vue';
-import search from './components/tabbar/search.vue';
-import shopcar from './components/tabbar/shopcar.vue';
-import member from './components/tabbar/member.vue';
-import newslist from './components/news/newslist.vue';
-import newsdetail from './components/news/newsdetail.vue';
-
-//定义路由匹配
-var router = new VueRouter({
-    routes:[
-        {path:"/",redirect:'/home'},  //路由重定向
-        {path:"/home",component:home},
-        {path:"/member",component:member},
-        {path:"/shopcar",component:shopcar},
-        {path:"/search",component:search},
-        {path:"/home/newslist",component:newslist},
-        {path:"/home/newsdetail/:id",component:newsdetail}
-    ],
-    //修改路由匹配到的默认类, 修改为mui的类
-    'linkActiveClass':'mui-active'
+// import home from './components/tabbar/home.vue';
+// import search from './components/tabbar/search.vue';
+// import shopcar from './components/tabbar/shopcar.vue';
+// import member from './components/tabbar/member.vue';
+// import newslist from './components/news/newslist.vue';
+// import newsdetail from './components/news/newsdetail.vue';
+//
+// //定义路由匹配
+// var router = new VueRouter({
+//     routes:[
+//         {path:"/",redirect:'/home'},  //路由重定向
+//         {path:"/home",component:home},
+//         {path:"/member",component:member},
+//         {path:"/shopcar",component:shopcar},
+//         {path:"/search",component:search},
+//         {path:"/home/newslist",component:newslist},
+//         {path:"/home/newsdetail/:id",component:newsdetail}
+//     ],
+//     //修改路由匹配到的默认类, 修改为mui的类
+//     'linkActiveClass':'mui-active'
+// });
+//引入路由模块，获取路由对象
+import router from './router.js';
+import moment from 'moment';
+//定义全局过滤器
+Vue.filter('dateFormat',function(dateStr,pattern="YYYY-MM-DD HH:mm:ss"){
+    return moment(dateStr).format(pattern);
+    //return 1111;
 });
-
-
-//引入mintui组件(css一般可以按需引入，而js一般是全局引入 )
-import { Header } from 'mint-ui';
+//引入mintui组件(css一般可以按需引入，而js一般是全局引入   )
+import { Header ,Button} from 'mint-ui';
 import 'mint-ui/lib/style.css'
 Vue.component(Header.name, Header);
 //按需导入轮播图所需要的两个组件
-import { Swipe, SwipeItem } from 'mint-ui';
+import { Swipe, SwipeItem ,Lazyload} from 'mint-ui';
 Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+//按需加载懒加载的组件
+Vue.component(SwipeItem.name, SwipeItem);  //注册组件
+Vue.use(Lazyload);
+//按钮组件
+
+Vue.component(Button.name, Button);
+
+
+//按需引入vant的标签页组件
+import { Tab, Tabs } from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Tab).use(Tabs);
 
 //引入mui的css样式
 import './lib/mui/css/mui.min.css';
 //引入mui扩展的字体文件
 import './lib/mui/css/icons-extra.css';
 
-//导入app.vue根组件
+//导入 app.vue根组件
 import app from './app.vue'
 
 //创建vm的实例

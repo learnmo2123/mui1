@@ -26,5 +26,12 @@ methods:{
         })
     }
 }
+
+mint-ui 步骤:1,引入组件 import { Swipe, SwipeItem } from 'mint-ui';  多个花括号,单个直接写
+             2,注册组件 Vue.component(Swipe.name, Swipe);
+this.$http.post(url,数据参数,模拟表单提交) 模拟表单提交 emulateJSON:true
+全局设置:Vue.http.options.emulateJSON = true;
+
+当控制台没有任何错误的时候,检查样式问题,或者添加样式
 ```
 
