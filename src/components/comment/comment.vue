@@ -58,6 +58,7 @@
                         Toast('评论成功');
                         this.content = '';
                         this.comments = []; //清空数据
+                        this.pageindex = 1;
                         this.getComments(); //重新加载最新的评论信息
                     }
                 })
