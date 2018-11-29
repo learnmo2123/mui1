@@ -34,7 +34,7 @@
         </div>
         <div class="mui-card-footer">
             <mt-button type="primary" class="mai">立即购买</mt-button>
-            <mt-button type="danger">加入购物车</mt-button>
+            <mt-button type="danger" @click='addGoodsToCar'>加入购物车</mt-button>
         </div>
         <!-- 卡片card:商品参数区域 -->
         <div class="mui-card">
@@ -62,7 +62,6 @@
         </div>
 
 
-
     </div>
 
 
@@ -83,13 +82,13 @@
             }
         },
         components: {
-            swipe,comment
+            swipe, comment
         },
         created() {
             this.getGoodsLunbo();
             this.getGoodsDetail();
         },
-        mounted(){
+        mounted() {
             //执行这里，说明虚拟dom已经挂载到真实dom中，这时候，可以用js去操作页面中的dom元素
             //初始化我们的number-box组件
             mui('.mui-numbox').numbox();  //修复购物数量的加减操作
@@ -123,8 +122,19 @@
                     }
                 })
             },
-            getGoodsDesc(){
-                this.$router.push('/home/goodsdesc/'+this.id);
+            getGoodsDesc() {
+                this.$router.push('/home/goodsdesc/' + this.id);
+            },
+            addGoodsToCar() {
+                var data = {
+                    id: this.id, //商品id
+                    number: this.$refs.number.value,  //商品数量
+                    price:this.goodsinfo.sell_price,
+                    selected:true, //默认加入购物车是处于选中
+                };
+                //把数据存储到vuex数据共享中state.cartData中
+                this.$store.commit('add',data);
+
             }
         }
     }

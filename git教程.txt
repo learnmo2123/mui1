@@ -8,6 +8,10 @@ $ touch .gitignore 忽略某些文件
 5  $ git commit -m '备注...'
 6. git remote -v 查看远程仓库地址   
 origin  git@github.com:learnmo2123/mui1.git (fetch)
-origin  git@github.com:learnmo2123/mui1.git (push)   在GitHub网站仓库中点击 SSH  复制过来,新建的仓库都有的
+origin  git@github.com:learnmo2123/mui1.git (push)   在GitHub网站仓库中点击 SSH  复制过来,新建的仓库都有的.仓库的download中点击也能看到
+设置仓库地址 $ git remote add origin git@github.com:learnmo2123/blog.git
 
+7强制覆盖式推送 git push origin master -f  会覆盖远程的版本  尝试 git pull origin master
+Updates were rejected because the remote contains work that you do
+hint: not have locally.
 7. 推送 git push -u origin master:master   第一次需要 -u master 可以只写一个
