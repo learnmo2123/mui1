@@ -25,7 +25,7 @@
                         <span class="number">购买数量： </span>
                         <div class="mui-numbox" data-numbox-min='1' data-numbox-max='200'>
                             <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-                            <input id="test" class="mui-input-numbox" type="number" value="1"/>
+                            <input id="test" class="mui-input-numbox" type="number" ref="number" value="1"/>
                             <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="mui-card-footer">
             <mt-button type="primary" class="mai">立即购买</mt-button>
-            <mt-button type="danger" @click='addGoodsToCar'>加入购物车</mt-button>
+            <mt-button type="danger" @click="addGoodsToCar">加入购物车</mt-button>
         </div>
         <!-- 卡片card:商品参数区域 -->
         <div class="mui-card">
@@ -130,10 +130,11 @@
                     id: this.id, //商品id
                     number: this.$refs.number.value,  //商品数量
                     price:this.goodsinfo.sell_price,
-                    selected:true, //默认加入购物车是处于选中
+                   selected:true, //默认加入购物车是处于选中
                 };
                 //把数据存储到vuex数据共享中state.cartData中
                 this.$store.commit('add',data);
+                console.log(data);
 
             }
         }
